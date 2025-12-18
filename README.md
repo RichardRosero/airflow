@@ -22,7 +22,8 @@ source lab_env/bin/activate
 ```
 
 ### Instalación del software
-```pip install "apache-airflow[postgres]==2.10.3" pandas --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.3/constraints-3.12.txt"
+```
+pip install "apache-airflow[postgres]==2.10.3" pandas --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.3/constraints-3.12.txt"
 ```
 
 ### Configuración inicial
