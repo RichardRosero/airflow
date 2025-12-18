@@ -10,19 +10,21 @@ Sigue estos pasos en tu terminal de Ubuntu para replicar el entorno del laborato
 
 ### Preparación del entorno
 
-```mkdir ~/airflow_lab```
+```mkdir ~/airflow_lab
 cd ~/airflow_lab
 python3 -m venv lab_env
 source lab_env/bin/activate
+```
 
 ### Instalación del software
-pip install "apache-airflow[postgres]==2.10.3" pandas --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.3/constraints-3.12.txt"
+```pip install "apache-airflow[postgres]==2.10.3" pandas --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.3/constraints-3.12.txt"```
 
 ### Configuración inicial
-export AIRFLOW_HOME=~/airflow_lab
+```export AIRFLOW_HOME=~/airflow_lab
 airflow db init
 airflow db reset -y
 airflow users create --username admin --firstname Richard --lastname Rosero --role Admin --email roseror@hitss.com --password admin
+```
 
 ### Ejecución de Servicios (Abrir dos terminales)
 
