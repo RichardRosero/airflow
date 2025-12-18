@@ -7,7 +7,11 @@ Este proyecto implementa un pipeline de datos (DAG) modular en Apache Airflow pa
 ## 📋 1. Guía de Instalación y Configuración
 
 Sigue estos pasos en tu terminal de Ubuntu para replicar el entorno del laboratorio.
-
+### instalación el instalador de paquetes global de python "pip" y el entorno con que virtualizaremos "venv"
+```sudo apt install -y python3-pip python3-venv
+python --version
+pip --version
+```
 ### Preparación del entorno
 
 ```mkdir ~/airflow_lab
