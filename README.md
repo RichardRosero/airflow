@@ -15,7 +15,8 @@ pip --version
 ```
 ### Preparación del entorno
 
-```mkdir ~/airflow_lab
+```
+mkdir ~/airflow_lab
 cd ~/airflow_lab
 python3 -m venv lab_env
 source lab_env/bin/activate
