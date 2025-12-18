@@ -9,8 +9,8 @@ Este proyecto implementa un pipeline de datos (DAG) modular en Apache Airflow pa
 Sigue estos pasos en tu terminal de Ubuntu para replicar el entorno del laboratorio.
 
 ### Preparación del entorno
-deactivate
-mkdir ~/airflow_lab
+
+```mkdir ~/airflow_lab```
 cd ~/airflow_lab
 python3 -m venv lab_env
 source lab_env/bin/activate
