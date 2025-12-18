@@ -17,7 +17,8 @@ source lab_env/bin/activate
 ```
 
 ### Instalación del software
-```pip install "apache-airflow[postgres]==2.10.3" pandas --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.3/constraints-3.12.txt"```
+```pip install "apache-airflow[postgres]==2.10.3" pandas --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.3/constraints-3.12.txt"
+```
 
 ### Configuración inicial
 ```export AIRFLOW_HOME=~/airflow_lab
@@ -29,24 +30,30 @@ airflow users create --username admin --firstname Richard --lastname Rosero --ro
 ### Ejecución de Servicios (Abrir dos terminales)
 
 Terminal 1 (Webserver):
+```
 source ~/airflow_lab/lab_env/bin/activate
 export AIRFLOW_HOME=~/airflow_lab
 airflow webserver --port 8080
+```
 
 Terminal 2 (Scheduler):
+```
 source ~/airflow_lab/lab_env/bin/activate
 export AIRFLOW_HOME=~/airflow_lab
 airflow scheduler
+```
 
 ---
 
 ## 📂 2. Estructura de Carpetas y Conexión
 
 1. Crear carpetas físicas:
+```
 mkdir ~/airflow_lab/dags
 mkdir -p /home/roseror/reportes_csv
+```
 
-2. Configurar Conexión en UI (Admin > Connections):
+3. Configurar Conexión en UI (Admin > Connections):
    - Conn Id: postgres_db
    - Conn Type: Postgres
    - Host: 10.32.112.57
@@ -54,7 +61,7 @@ mkdir -p /home/roseror/reportes_csv
 ---
 
 ## 🛠️ 3. Código del DAG (~/airflow_lab/dags/dag_naps_final.py)
-
+```
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
@@ -116,9 +123,9 @@ with DAG(
     t4 = PythonOperator(task_id='tarea_cargar', python_callable=guardar_a_csv)
 
     t1 >> t2 >> t3 >> t4
-
+```
 ---
 
 ## 🔍 4. Verificación y Debugging
-- Ver errores en CLI: airflow dags list-import-errors
-- Ver resultado físico: cat /home/roseror/reportes_csv/resultado_naps.csv
+- Ver errores en CLI: ```airflow dags list-import-errors```
+- Ver resultado físico: ```cat /home/roseror/reportes_csv/resultado_naps.csv```
