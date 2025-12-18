@@ -135,3 +135,15 @@ with DAG(
 ## 🔍 4. Verificación y Debugging
 - Ver errores en CLI: ```airflow dags list-import-errors```
 - Ver resultado físico: ```cat /home/roseror/reportes_csv/resultado_naps.csv```
+
+### nota
+
+Organización por Subcarpetas
+No estás obligado a tener 50 archivos sueltos en una misma carpeta. Airflow escanea de forma recursiva. Puedes organizar así:
+```
+~/airflow_lab/dags/proyecto_naps/dag_final.py
+
+~/airflow_lab/dags/proyecto_ventas/dag_ventas.py
+
+~/airflow_lab/dags/utilitarios/limpieza.py
+```
