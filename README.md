@@ -137,6 +137,28 @@ with DAG(
 - Ver errores en CLI: ```airflow dags list-import-errors```
 - Ver resultado físico: ```cat /home/roseror/reportes_csv/resultado_naps.csv```
 
+
+## 5 configuracion servidor smtp airflow
+```
+   sudo bash -c "$(curl -sL https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh)"
+   mailpit
+   mailpit --smtp-auth-allow-insecure --listen 0.0.0.0:8025 --smtp 0.0.0.0:1025
+   
+```
+   
+# El servidor emisor que creaste (Mailpit)
+   ```
+   mailpit --smtp-auth-allow-insecure --listen 0.0.0.0:8025 --smtp 0.0.0.0:1025
+   ```
+   ```
+   smtp_host = 192.168.31.128
+   smtp_starttls = False
+   smtp_ssl = False
+   smtp_user = 
+   smtp_password = 
+   smtp_port = 1025
+   smtp_mail_from = airflow@example.com
+```
 ### nota
 
 Organización por Subcarpetas
