@@ -148,7 +148,7 @@ with DAG(
    
 # El servidor emisor que creaste (Mailpit)
    ```
-   mailpit --smtp-auth-allow-insecure --listen 0.0.0.0:8025 --smtp 0.0.0.0:1025
+   nano ~/airflow_lab/airflow.cfg
    ```
    ```
    smtp_host = 192.168.31.128
