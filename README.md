@@ -170,3 +170,22 @@ No estás obligado a tener 50 archivos sueltos en una misma carpeta. Airflow esc
 
 ~/airflow_lab/dags/utilitarios/limpieza.py
 ```
+
+### si deseas agregar un crontab en el dag:
+```
+with DAG(
+    'laboratorio_naps_final_fallar_mail',
+    default_args=default_args,
+    # Aquí agregas el Crontab entre comillas
+    schedule_interval='0 5 * * *', 
+    catchup=False,
+) as dag:
+
+
+
+Frecuencia,Expresión Cron,Descripción
+Cada hora,'0 * * * *',Se ejecuta al minuto 0 de cada hora.
+Diario (Medianoche),'0 0 * * *',Se ejecuta una vez al día a las 00:00.
+Cada Lunes,'0 0 * * 1',Se ejecuta el primer día de la semana.
+Días laborables,'0 9 * * 1-5',De lunes a viernes a las 9:00 AM.
+```
