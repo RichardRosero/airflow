@@ -63,7 +63,7 @@ mkdir -p /home/roseror/reportes_csv
 3. Configurar Conexión en UI (Admin > Connections):
    - Conn Id: postgres_db
    - Conn Type: Postgres
-   - Host: 10.32.112.57
+   - Host: 100.132.112.157
 
 ---
 
