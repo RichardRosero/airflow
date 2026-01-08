@@ -1,4 +1,4 @@
-# 🚀 Laboratorio ETL: Inventario NAPS con Apache Airflow
+# 🚀 Laboratorio ETL: Inventario NAPS con Apache Airflow  ubuntu: roseror contraseña: 123456
 
 Este proyecto implementa un pipeline de datos (DAG) modular en Apache Airflow para extraer datos de una base de datos PostgreSQL, transformar campos específicos y generar reportes en formato CSV.
 
