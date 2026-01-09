@@ -193,7 +193,7 @@ Días laborables,'0 9 * * 1-5',De lunes a viernes a las 9:00 AM.
 ### ver en powerautomate las notificaciones
 https://make.powerautomate.com/ aqui vemos los logs en caso mandemos mal la estructura del mensaje
 se debe crear un canal
-
+```
 def notify_teams(context, success=False):
     dag_id = context.get('task_instance').dag_id
     task_id = context.get('task_instance').task_id
@@ -240,3 +240,5 @@ default_args = {
     'retries': 0, # Configurado en 0 para aviso inmediato según tu solicitud
     'on_failure_callback': on_failure, # Se activa al primer fallo
 }
+
+```
