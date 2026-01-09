@@ -189,3 +189,54 @@ Diario (Medianoche),'0 0 * * *',Se ejecuta una vez al día a las 00:00.
 Cada Lunes,'0 0 * * 1',Se ejecuta el primer día de la semana.
 Días laborables,'0 9 * * 1-5',De lunes a viernes a las 9:00 AM.
 ```
+
+### ver en powerautomate las notificaciones
+https://make.powerautomate.com/ aqui vemos los logs en caso mandemos mal la estructura del mensaje
+se debe crear un canal
+
+def notify_teams(context, success=False):
+    dag_id = context.get('task_instance').dag_id
+    task_id = context.get('task_instance').task_id
+    log_url = context.get('task_instance').log_url
+    
+    title = "✅ DAG EXITOSO" if success else "🚨 ALERTA DE FALLA"
+    color = "good" if success else "attention"
+    msg = f"El DAG **{dag_id}** finalizó." if success else f"La tarea **{task_id}** falló en el DAG **{dag_id}**."
+
+    # Estructura de Adaptive Card que espera tu plantilla de Power Automate
+    teams_payload = {
+        "type": "message",
+        "attachments": [{
+            "contentType": "application/vnd.microsoft.card.adaptive",
+            "content": {
+                "type": "AdaptiveCard",
+                "body": [
+                    {"type": "TextBlock", "text": title, "weight": "Bolder", "size": "Large", "color": color},
+                    {"type": "TextBlock", "text": msg, "wrap": True}
+                ],
+                "actions": [
+                    {"type": "Action.OpenUrl", "title": "Ver Logs", "url": log_url}
+                ],
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                "version": "1.4"
+            }
+        }]
+    }
+    
+    hook = HttpHook(http_conn_id='msteams_webhook', method='POST')
+    hook.run(endpoint='', data=json.dumps(teams_payload), headers={"Content-Type": "application/json"})
+
+# Wrappers para los callbacks
+def on_failure(context):
+    notify_teams(context, success=False)
+
+def on_success(context):
+    notify_teams(context, success=True)
+
+# --- CONFIGURACIÓN DEL DAG ---
+default_args = {
+    'owner': 'Richard_Rosero',
+    'start_date': datetime(2025, 1, 1),
+    'retries': 0, # Configurado en 0 para aviso inmediato según tu solicitud
+    'on_failure_callback': on_failure, # Se activa al primer fallo
+}
